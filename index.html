@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const n=new URLSearchParams(location.search).get("theme");if(n==="light"||n==="dark"){document.documentElement.dataset.theme=n}}{if(new URLSearchParams(location.search).get("_omthumb")==="1"){const n=(f)=>{const g=f.focus;if(!g)return;f.focus=function(h){g.call(this,{...h,preventScroll:true})}};n(HTMLElement.prototype);n(SVGElement.prototype);if(typeof MathMLElement!=="undefined"){n(MathMLElement.prototype)}const d=(f)=>{f.removeAttribute("autofocus");f.inert=true;if(!(f instanceof HTMLElement))f.removeAttribute("tabindex")};const p=(f)=>{if(f.hasAttribute("autofocus"))d(f);for(const g of f.querySelectorAll("[autofocus]")){d(g)}};p(document.documentElement);new MutationObserver((f)=>{for(const g of f){for(const h of g.addedNodes){if(h.nodeType===1)p(h)}}}).observe(document,{childList:true,subtree:true})}}{const n=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const d=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(d&&d!=="normal")return;const p=(y)=>{if(!y)return null;const m=getComputedStyle(y).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!m)return null;const w=m[4]==null?1:parseFloat(m[4])/(m[4].endsWith("%")?100:1);if(w<0.99)return null;return[+m[1],+m[2],+m[3]]};const f=p(document.body)||p(document.documentElement);if(!f)return;const g=(y)=>{const m=y/255;return m<=0.04045?m/12.92:((m+0.055)/1.055)**2.4};const h=0.2126*g(f[0])+0.7152*g(f[1])+0.0722*g(f[2]);document.documentElement.style.setProperty("color-scheme",h<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")n();else window.addEventListener("load",n)}var I=["https://claude.ai","https://preview.claude.ai","https://9f5e3b04-a575-4015-9c2a-e569f61b6072.claudeusercontent.com"];var B=true;var K=false;var C=()=>{};if(K===true){try{const n=setTimeout.bind(window);const d=1e4;const p=15;const f=1e4;const g=120000;const h=200;const y=(o)=>{try{let r;if(typeof o==="string")r=o;else if(o instanceof URL)r=o.href;else if(typeof Request!=="undefined"&&o instanceof Request)r=o.url;else return null;if(!r)return null;const l=document.baseURI;const i=new URL(r,l);if(i.protocol!=="http:"&&i.protocol!=="https:")return null;if(i.origin!==new URL(l).origin)return null;return i.origin+i.pathname}catch{return null}};const m=new Map;const w=(o)=>{let r=m.get(o);if(!r){if(m.size>=h){const l=m.keys().next().value;if(l!==undefined)m.delete(l)}r={fails:[],until:0,cooldown:f,hard:false};m.set(o,r)}return r};const R=(o)=>{const r=m.get(o);return r!==undefined&&r.until>Date.now()};const O=(o,r)=>{const l=Date.now();const i=w(o);if(r)i.hard=true;if(i.until>l)return;i.fails.push(l);while(i.fails.length>0&&i.fails[0]<=l-d)i.fails.shift();if(i.fails.length>=p){i.until=l+i.cooldown;if(i.hard)i.cooldown=Math.min(i.cooldown*2,g);i.fails.length=0;try{n(()=>{try{S(true)}catch{}},i.until-l+100)}catch{}console.warn("[omelette] asset circuit breaker: pausing requests to "+o+" for "+Math.round((i.until-l)/1000)+"s after "+p+" failures in "+d/1000+"s")}};const e=(o)=>{m.delete(o)};const t=100;const a=new WeakMap;const u=new Set;let s=null;const S=(o)=>{for(const r of Array.from(u)){try{const l=a.get(r);if(l===undefined){u.delete(r);continue}if(o){const i=y(l);if(i!==null&&R(i))continue}a.delete(r);u.delete(r);if(s!==null)s.call(r,l)}catch{}}};C=()=>{try{m.clear();S(false)}catch{}};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")C()});const _=window.fetch;if(typeof _==="function"){const o=function(...r){let l=null;try{l=y(r[0])}catch{}if(l!==null&&R(l)){let c;try{if(r[1]&&r[1].signal!==undefined){c=r[1].signal||undefined}else if(typeof Request!=="undefined"&&r[0]instanceof Request){c=r[0].signal||undefined}}catch{c=undefined}return new Promise((k,b)=>{const E=()=>{try{return c.reason!==undefined?c.reason:new DOMException("The operation was aborted.","AbortError")}catch{return new DOMException("The operation was aborted.","AbortError")}};try{if(c&&c.aborted){b(E());return}}catch{}let T=false;const j=()=>{if(T)return;T=true;b(E())};try{if(c)c.addEventListener("abort",j,{once:true})}catch{}n(()=>{if(T)return;T=true;try{if(c)c.removeEventListener("abort",j)}catch{}let L;try{L=new Response(null,{status:429,statusText:"Too Many Requests",headers:{"Retry-After":"10"}})}catch{L={ok:false,status:429}}k(L)},250)})}const i=_.apply(window,r);if(l!==null){const c=l;i.then((k)=>{try{if(k.ok)e(c);else if(k.status===401||k.status===403||k.status===404||k.status===429){O(c,k.status!==404)}}catch{}},()=>{})}return i};window.fetch=o}const v=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");if(v!==undefined&&v.set!==undefined&&v.get!==undefined){const o=v.set;s=o;Object.defineProperty(HTMLImageElement.prototype,"src",{configurable:true,enumerable:v.enumerable,get:v.get,set(r){const l=`${r}`;try{const i=y(l);if(i!==null&&R(i)){a.set(this,l);if(u.size<t)u.add(this);return}}catch{}try{a.delete(this);u.delete(this)}catch{}o.call(this,l)}})}try{const o=HTMLImageElement.prototype.setAttribute;HTMLImageElement.prototype.setAttribute=function(r,l){if(arguments.length<2){o.apply(this,arguments);return}if(typeof r==="string"&&r.toLowerCase()==="src"){const i=`${l}`;try{const c=y(i);if(c!==null&&R(c)){a.set(this,i);if(u.size<t)u.add(this);return}a.delete(this);u.delete(this)}catch{}o.call(this,r,i);return}o.call(this,r,l)}}catch{}window.addEventListener("error",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)O(l,true)}}catch{}},true);window.addEventListener("load",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)e(l);const i=a.get(r);if(i!==undefined){let c=false;try{c=new URL(i,document.baseURI).href===new URL(r.currentSrc||r.src||"",document.baseURI).href}catch{c=false}if(c){a.delete(r);u.delete(r)}}}}catch{}},true)}catch{}}var J=30000;var G=3000;document.addEventListener("DOMContentLoaded",()=>{const n=window.Babel;const d="om-src-id";if(n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[d])){n.registerPlugin(d,({types:h})=>({visitor:{JSXOpeningElement(y,m){const w=y.node;if(w.name&&w.name.type==="JSXMemberExpression")return;for(let t=0;t<w.attributes.length;t++){const a=w.attributes[t];if(a.type==="JSXAttribute"&&a.name&&a.name.name==="data-om-id")return}const R=m.file&&m.file.opts&&m.file.opts.filename||"?";const O=w.loc&&w.loc.start;const e=`jsx:${R}:${w.start??0}:${O?O.line:0}:${O?O.column+1:0}`;w.attributes.push(h.jsxAttribute(h.jsxIdentifier("data-om-id"),h.stringLiteral(e)))}}}))}const p="om-text-extract";let f=false;if(B&&n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[p])){const h=window.React;if(h&&h.useSyncExternalStore&&h.createElement){f=true;const y={};const m=new Set;let w=0;window.__omTextO=y;window.__omTextSet=(e)=>{for(const t in e){const a=e[t];if(a==null)delete y[t];else y[t]=a}w++;m.forEach((t)=>t())};const R=(e)=>{m.add(e);return()=>m.delete(e)};const O=()=>w;window.__OmT=function e(t){h.useSyncExternalStore(R,O,O);return h.createElement("span",{"data-om-text":t.i,className:"__om-t"},t.i in y?y[t.i]:t.children)};n.registerPlugin(p,({types:e})=>{const t={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const a={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const u=(o,r)=>e.logicalExpression("??",e.memberExpression(e.logicalExpression("||",e.memberExpression(e.identifier("window"),e.identifier("__omTextO")),e.objectExpression([])),e.stringLiteral(o),true),r);const s=(o)=>o.file&&o.file.opts&&o.file.opts.filename||"?";const S=(o)=>o.file&&o.file.code||"";const _=(o,r)=>{const l=(c)=>c&&c.start!=null&&c.end!=null&&(c.type==="StringLiteral"||c.type==="TemplateLiteral"&&c.expressions.length===0)?[c.start,c.end]:null;const i=l(r);if(i)return i;if(r&&r.type==="Identifier"){const c=o.scope.getBinding(r.name);if(c&&c.constant&&c.path.node.type==="VariableDeclarator"){return l(c.path.node.init)}}return null};const v=(o,r,l)=>{const i=o.node;let c=false;const k=(E,T)=>{c=true;return e.jsxElement(e.jsxOpeningElement(e.jsxIdentifier("__OmT"),[e.jsxAttribute(e.jsxIdentifier("i"),e.stringLiteral(E))],false),e.jsxClosingElement(e.jsxIdentifier("__OmT")),[T],false)};const b=i.children.map((E)=>{if(E.type==="JSXText"){if(E.start==null||E.end==null)return E;const T=l.slice(E.start,E.end);const j=T.length-T.trimStart().length;const L=T.length-T.trimEnd().length;if(j+L>=T.length)return E;return k(`txt:${r}:${E.start+j}:${E.end-L}`,E)}if(E.type==="JSXExpressionContainer"){const T=_(o,E.expression);if(T)return k(`str:${r}:${T[0]}:${T[1]}`,E)}return E});if(c)i.children=b};return{visitor:{JSXOpeningElement(o,r){const l=o.node;const i=s(r);const c={};for(let k=0;k<l.attributes.length;k++){const b=l.attributes[k];if(b.type!=="JSXAttribute"||!b.name)continue;const E=b.name.name;if(!a[E])continue;if(!b.value||b.value.type!=="StringLiteral")continue;if(b.value.start==null||b.value.end==null)continue;const T=`txt:${i}:${b.value.start}:${b.value.end}`;c[E]=T;b.value=e.jsxExpressionContainer(u(T,e.stringLiteral(b.value.value)))}if(Object.keys(c).length){l.attributes.push(e.jsxAttribute(e.jsxIdentifier("data-om-text-attrs"),e.stringLiteral(JSON.stringify(c))))}},JSXElement(o,r){const l=o.node.openingElement;const i=l&&l.name&&l.name.name;if(i==="__OmT")return;if(typeof i==="string"&&t[i])return;v(o,s(r),S(r))},JSXFragment(o,r){v(o,s(r),S(r))}}}})}}const g=f?["transform-react-jsx-source",d,p]:["transform-react-jsx-source",d];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((h,y)=>{const m=h.getAttribute("data-plugins")||"";const w=g.filter((R)=>m.indexOf(R)<0);if(w.length){h.setAttribute("data-plugins",m?`${m},${w.join(",")}`:w.join(","))}if(!h.hasAttribute("data-filename")){h.setAttribute("data-filename",h.getAttribute("src")||`inline-${y}`)}})});var A=window.parent;var U="not editable here — open the project in the Claude Design editor to save";var W=()=>Promise.resolve({persisted:false,noHost:true,reason:U});var H=W;var M="data/storage.json";var z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.match(/\/projects\/([^/]+)\/serve\//);if(d)return d[1];return n.hostname.split(".")[0]||""}catch{return location.hostname.split(".")[0]||""}};var Z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.indexOf("/serve/");if(d>=0)return n.origin+n.pathname.slice(0,d+"/serve/".length)+M}catch{}return"./"+M};var x=null;var N=()=>{if(!x){x=fetch(Z(),{cache:"no-store"}).then((n)=>{if(n.ok)return n.text();return n.status===404?"":null}).catch(()=>null).then((n)=>{if(n===null){x=null;return null}const d=new Map;if(!n)return d;let p;try{p=JSON.parse(n)}catch{console.warn("[omelette.storage] "+M+" is not valid JSON; treating the store as unreadable so a save cannot overwrite the "+"hand-edited bytes. Fix the JSON (or delete the file) to re-enable persistence.");x=null;return null}if(p===null||typeof p!=="object"||Array.isArray(p)){console.warn("[omelette.storage] "+M+" doesn't hold a JSON object; treating the store as unreadable so a save cannot "+"overwrite the hand-edited bytes. Make the top level a JSON object to re-enable persistence.");x=null;return null}const f=p;if("data"in f){const g=f.data;if(g===null||typeof g!=="object"||Array.isArray(g)){console.warn("[omelette.storage] "+M+' has a "data" field that is not a JSON object; treating the store as unreadable so a '+'save cannot overwrite the hand-edited bytes. Make "data" a JSON object to re-enable persistence.');x=null;return null}const h=f._meta;const y=h!==null&&typeof h==="object"?h.project:undefined;if(typeof y==="string"&&y!==""&&y!==z())return d;for(const m of Object.keys(g))d.set(m,g[m]);return d}for(const g of Object.keys(f)){if(g!=="_meta")d.set(g,f[g])}return d})}return x};var F=(n)=>H(M,JSON.stringify({_meta:{project:z(),version:1},data:Object.fromEntries(n)},null,2));var D=Promise.resolve();var $=(n)=>{const d=D.then(n);D=d.then(()=>{return},()=>{return});return d};var V=/sk-(?:ant-)?[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|xox[a-z]-[A-Za-z0-9][A-Za-z0-9-]{9,}|AIza[0-9A-Za-z_-]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;var Y=/password|passwd|secret|api[_-]?key|access[_-]?token|auth[_-]?token|credential/i;var Q=(n,d,p)=>{if(V.test(d)||Y.test(n)&&typeof p==="string"&&p.length>=8){console.warn('[omelette.storage] the value for "'+n+'" looks like a credential. The storage file is a plaintext project file — visible to '+"everyone with project access and copied when the project is duplicated. Do not store secrets here.")}};var q={persisted:false,reason:"could not load the existing store — not overwriting it"};var X={persisted:false,reason:"stored value changed since a failed read — re-read this key before saving"};var P=new Set;var ee={get:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.get: key must be a string"))}return $(N).then((d)=>{if(d===null){P.add(n);return null}P.delete(n);if(!d.has(n))return null;const p=d.get(n);return p==null?null:JSON.parse(JSON.stringify(p))})},set:(n,d)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.set: key must be a string"))}let p;try{p=JSON.stringify(d)}catch(g){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable ("+String(g)+")"))}if(p===undefined){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable"))}Q(n,p,d);const f=JSON.parse(p);return $(()=>N().then((g)=>{if(g===null)return q;if(P.has(n)){if(g.has(n))return X;P.delete(n)}g.set(n,f);return F(g)}))},delete:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.delete: key must be a string"))}return $(()=>N().then((d)=>{if(d===null)return q;if(P.has(n)){if(d.has(n))return X;P.delete(n)}d.delete(n);return F(d)}))},keys:()=>$(N).then((n)=>n===null?[]:Array.from(n.keys()))};window.omelette={writeFile:(n,d)=>H(n,d).then((p)=>{if(!p.persisted&&!p.noHost){throw new Error(p.reason||"write failed")}}),storage:ee};if(A&&A!==window){const n=(e,t)=>{try{A.postMessage({__omelette_log:true,type:e,data:t},"*")}catch{}};["log","warn","error"].forEach((e)=>{const t=console[e];console[e]=(...a)=>{const u=a.map((s)=>{try{return typeof s==="object"?JSON.stringify(s):String(s)}catch{try{return String(s)}catch{return"[unstringifiable]"}}}).join(" ");n(e,u);t.apply(console,a)}});window.addEventListener("error",(e)=>{const t=e.target;if(t&&t!==window&&t.tagName){const a=t.src||t.href||"";n("resource_error",`${t.tagName} failed to load: ${a}`)}else{n("error",`${e.message||"Unknown error"} at ${e.filename||"?"}:${e.lineno||0}:${e.colno||0}`)}},true);window.addEventListener("unhandledrejection",(e)=>{const t=e.reason;const a=t instanceof Error?`${t.message} ${t.stack}`:String(t);n("error",`Unhandled rejection: ${a}`)});window.addEventListener("click",(e)=>{if(e.defaultPrevented||e.button!==0)return;if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const t=e.composedPath?e.composedPath():[];const a=["button","input","select","textarea","summary","label"];let u=null;for(const v of t){if(!(v instanceof Element))continue;if(v.localName==="a"){if(!(v instanceof HTMLAnchorElement))return;u=v;break}if(a.indexOf(v.localName)!==-1)return}if(!u)return;if(u.isContentEditable)return;const s=u.closest("[contenteditable]");if(s&&s.getAttribute("contenteditable")!=="false")return;const S=(u.getAttribute("target")||"_self").toLowerCase();if(S!=="_self"&&S!=="_top"&&S!=="_parent")return;let _;try{_=new URL(u.href)}catch{return}if(_.protocol!=="http:"&&_.protocol!=="https:")return;if(location.origin==="null")return;if(_.origin===location.origin)return;e.preventDefault();window.open(_.href,"_blank","noopener,noreferrer")});const d=()=>{try{A.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(d).observe(document.documentElement);const p=()=>{d();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const e=()=>document.getElementById("root")||document.querySelector("body > div[id]");const t=e()?.firstElementChild??null;let a=0;const u=()=>{const s=e();if(s&&s.firstElementChild!==t||++a>30){d();return}setTimeout(u,100)};setTimeout(u,100)};if(document.readyState==="complete")p();else window.addEventListener("load",p);const f={};let g=0;const h=(e)=>new Promise((t,a)=>{if(!I.length){a(new Error("claude.complete: no parent origin"));return}const u=`c${++g}`;const s=()=>setTimeout(()=>{delete f[u];a(new Error(`claude.complete: no data for ${J/1000}s`))},J);const S=s();f[u]={resolve:t,reject:a,text:"",t:S,arm:s};try{for(const _ of I){A.postMessage({__om_api:true,id:u,body:e},_)}}catch(_){clearTimeout(S);delete f[u];a(_)}});const y=8;const m=async(e,t)=>{if(!Array.isArray(e.messages)){throw new Error("claude.complete: tools require a messages array")}const a=e.messages.slice();const u={...e,tools:e.tools.map((_)=>{if(_===null||typeof _!=="object")return _;const v={};for(const o of Object.keys(_)){if(typeof _[o]!=="function")v[o]=_[o]}return v})};const s=u.tool_choice;const S=s!=null&&(s.type==="any"||s.type==="tool")?{...u,tool_choice:s.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:s.disable_parallel_tool_use}:{type:"auto"}}:u;for(let _=0;_<y;_++){const v=await h({..._===0?u:S,messages:a});const o=v.message;const r=o&&Array.isArray(o.content)?o.content:null;const l=r?r.filter((c)=>c?.type==="tool_use"):[];if(o?.stop_reason!=="tool_use"||l.length===0){return v.text}const i=[];for(const c of l){const k=t.get(c.name);if(!k){i.push({type:"tool_result",tool_use_id:c.id,content:`no handler for tool "${c.name}"`,is_error:true});continue}try{const b=await k(c.input);const E=typeof b==="string"?b:O(b)??"";i.push({type:"tool_result",tool_use_id:c.id,content:E})}catch(b){i.push({type:"tool_result",tool_use_id:c.id,content:String(b?.message??b??"tool handler failed"),is_error:true})}}a.push({role:"assistant",content:r},{role:"user",content:i})}throw new Error(`claude.complete: exceeded ${y} tool turns`)};window.claude={complete(e){const t=e;if(t!==null&&typeof t==="object"&&Array.isArray(t.tools)&&t.tools.some((a)=>a!==null&&typeof a==="object"&&typeof a.run==="function")){const a=new Map;for(const u of t.tools){if(u!==null&&typeof u==="object"&&typeof u.run==="function"){a.set(String(u.name),u.run)}}return m(t,a)}return h(e).then((a)=>a.text)}};const w={};let R=0;H=(e,t)=>new Promise((a)=>{if(!I.length){a({persisted:false,noHost:true,reason:U});return}const u=`f${++R}`;const s=setTimeout(()=>{delete w[u];a({persisted:false,noHost:true,reason:U})},G);w[u]={settle:a,t:s};try{for(const S of I){A.postMessage({__om_file:true,id:u,op:"write",path:e,content:t},S)}}catch{clearTimeout(s);delete w[u];a({persisted:false,noHost:true,reason:U})}});const O=(e)=>{try{return JSON.stringify(e)}catch{return JSON.stringify(String(e))}};window.addEventListener("message",(e)=>{if(I.indexOf(e.origin)<0)return;if(e.source!==A)return;const t=e.data;if(!t)return;if(t.type==="omelette-preview-refresh"){if(typeof t.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(t.token))return;const s=Math.max(1,Math.floor((t.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+t.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+s;C();return}if(t.__om_file_r){const s=w[t.id];if(!s)return;clearTimeout(s.t);delete w[t.id];s.settle(t.ok?{persisted:true}:{persisted:false,reason:t.error||"write failed"});return}if(t.__om_api_r){const s=f[t.id];if(!s)return;if(t.error!=null){clearTimeout(s.t);delete f[t.id];s.reject(new Error(t.error));return}if(t.chunk!=null){clearTimeout(s.t);s.t=s.arm();s.text+=t.chunk;return}if(t.done){clearTimeout(s.t);delete f[t.id];s.resolve({text:t.text!=null?t.text:s.text,message:t.message});return}return}if(!t.__om_eval)return;const a=t;const u=(s)=>{e.source.postMessage({...s,__om_eval_r:1,id:a.id},e.origin)};try{const s=(0,eval)(a.code);if(s&&typeof s.then==="function"){s.then((S)=>u({ok:1,v:O(S)}),(S)=>u({ok:0,e:String(S)}))}else{u({ok:1,v:O(s)})}}catch(s){u({ok:0,e:String(s)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@300;400;500&amp;family=Sora:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="data/site.js"></script>
+<script src="js/qt-anim.js"></script>
+<script src="js/qt-motion.js"></script>
+<style>
+html{background:#05050B}
+body{margin:0;background:#05050B;color:#F2F0FA;font-family:"Sora","Noto Sans SC",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}a:hover{color:#A98BEF}
+button{font-family:inherit}
+*:focus-visible{outline:2px solid #8B6AD8;outline-offset:3px}
+::selection{background:#8B6AD8;color:#fff}
+@keyframes qtDot{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+@keyframes qtPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes qtBlink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes qtScan{0%{transform:translateX(-10vw)}100%{transform:translateX(110vw)}}
+@keyframes qtDropIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes qtKen{0%{transform:scale(1.04)}100%{transform:scale(1.16)}}
+</style>
+</helmet>
+
+<dc-import name="QTHeader" active="" style="position:fixed;top:0;left:0;right:0;z-index:60" hint-size="100%,72px"></dc-import>
+
+<sc-if value="{{ showIntro }}" hint-placeholder-val="{{ false }}"><qt-intro once=""></qt-intro></sc-if>
+
+<main id="top" style="background:#05050B">
+
+<section data-screen-label="01 Hero" aria-label="Façonner l'avenir" style="position:relative;height:100vh;min-height:600px;background:#05050B;overflow:hidden">
+  <div ref="{{ heroMediaRef }}" style="position:absolute;inset:0;will-change:transform">
+    <img src="media/raw/car/v14.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+    <sc-if value="{{ isFile }}" hint-placeholder-val="{{ true }}">
+      <video ref="{{ videoRef }}" src="{{ heroSrc }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.18);transform-origin:50% 30%;opacity:{{ videoOpacity }};transition:opacity 1.2s"></video>
+    </sc-if>
+    <sc-if value="{{ isEmbed }}" hint-placeholder-val="{{ false }}">
+      <iframe src="{{ embedSrc }}" title="Vidéo Quantum Tech" allow="autoplay; fullscreen; picture-in-picture" frameBorder="0" style="position:absolute;left:50%;top:50%;width:max(100vw,177.78vh);height:max(100vh,56.25vw);transform:translate(-50%,-50%);border:0;pointer-events:none"></iframe>
+    </sc-if>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(5,5,11,{{ darken }})"></div>
+  <div style="position:absolute;left:0;right:0;top:0;height:160px;background:linear-gradient(180deg,rgba(5,5,11,.45),rgba(5,5,11,0))"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(0deg,rgba(5,5,11,.55),rgba(5,5,11,0))"></div>
+
+  <sc-if value="{{ videoMissing }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:96px;right:clamp(20px,3vw,40px);border:1px dashed #4A4766;background:rgba(5,5,11,.6);padding:10px 14px;font:500 10px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:#C9C6DA;max-width:300px">VIDÉO HERO INTROUVABLE<br><span style="color:#8D8AA6">Collez l'URL de votre vidéo dans Tweaks → « URL de la vidéo hero ».</span></div>
+  </sc-if>
+
+  <div ref="{{ heroTextRef }}" style="position:absolute;left:clamp(20px,3vw,40px);right:clamp(20px,3vw,40px);bottom:clamp(28px,4vh,40px);display:flex;flex-direction:column;gap:clamp(20px,3vh,28px);will-change:transform,opacity">
+    <h1 lang="{{ lang }}" data-stagger="80" style="margin:0;font:500 clamp(38px,4.6vw,76px)/0.94 'Sora','Noto Sans SC',sans-serif;letter-spacing:-.045em;max-width:9.5ch;color:#FFFFFF;text-shadow:0 2px 30px rgba(5,5,11,.25);display:flex;flex-wrap:wrap;gap:0 .22em">
+      <sc-for list="{{ heroWords }}" as="w" hint-placeholder-count="2"><span data-reveal="up" data-delay="300" style="display:inline-block">{{ w.t }}</span></sc-for>
+    </h1>
+  </div>
+  <a href="#manifeste" aria-label="Défiler" style="position:absolute;right:clamp(20px,3vw,40px);bottom:clamp(28px,4vh,40px);display:flex;flex-direction:column;align-items:center;gap:10px;font:500 9px 'JetBrains Mono',monospace;letter-spacing:.3em;color:#F2F0FA" style-hover="color:#FFFFFF">DÉFILER<span style="position:relative;width:1px;height:52px;background:rgba(242,240,250,.3);overflow:hidden"><span style="position:absolute;left:-1px;top:0;width:3px;height:10px;border-radius:2px;background:linear-gradient(#7C9BF0,#E58BC0);animation:qtDot 2.2s cubic-bezier(.6,0,.4,1) infinite"></span></span></a>
+</section>
+
+<section id="manifeste" ref="{{ manifestoRef }}" data-screen-label="02 Manifeste" style="position:relative;background:#05050B;padding:clamp(120px,18vh,220px) clamp(20px,4vw,64px);overflow:hidden">
+  <div data-parallax="0.12" aria-hidden="true" style="position:absolute;right:4vw;top:18%;writing-mode:vertical-rl;font:300 clamp(40px,6vw,88px)/1 'Noto Sans SC',sans-serif;letter-spacing:.3em;color:#14132A">塑造未来</div>
+  <div style="position:relative;max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <span data-reveal="fade" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#A98BEF">DEPUIS 2005</span>
+    <p style="margin:0;max-width:20ch;font:300 clamp(36px,5.4vw,88px)/1.08 'Sora',sans-serif;letter-spacing:-.03em;display:flex;flex-wrap:wrap;gap:0 .26em">
+      <sc-for list="{{ manifestoWords }}" as="w" hint-placeholder-count="12"><span data-w="" style="display:inline-block;opacity:.14;transition:opacity .25s;color:#F2F0FA">{{ w.t }}</span></sc-for>
+    </p>
+  </div>
+</section>
+
+<section id="ecosysteme" data-screen-label="03 Écosystème" style="position:relative;background:#05050B;padding:clamp(96px,14vh,160px) clamp(20px,4vw,64px);overflow:hidden;border-top:1px solid #12111F">
+  <div aria-hidden="true" style="position:absolute;left:-20%;top:10%;width:70%;aspect-ratio:1;background:radial-gradient(circle,rgba(79,123,224,.12),rgba(5,5,11,0) 60%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(48px,6vw,96px);align-items:center">
+    <div ref="{{ tiltRef }}" onMouseMove="{{ sceneMove }}" onMouseLeave="{{ sceneLeave }}" data-reveal="scale" style="perspective:1200px">
+      <div ref="{{ sceneRef }}" onMouseLeave="{{ clearPole }}" style="position:relative;width:100%;max-width:660px;aspect-ratio:1;margin:0 auto;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.16,.84,.24,1)">
+        <div style="position:absolute;inset:11%;border:1px solid #1E1D33;border-radius:50%"></div>
+        <div ref="{{ ringRef }}" style="position:absolute;inset:4%;border:1px dashed #1A1930;border-radius:50%"></div>
+        <div style="position:absolute;inset:30%;border:1px solid #1A1930;border-radius:50%"></div>
+        <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+          <defs>
+            <linearGradient id="qtEcoG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F7BE0"></stop><stop offset=".5" stop-color="#8B6AD8"></stop><stop offset="1" stop-color="#D46CA8"></stop></linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="39" fill="none" stroke="url(#qtEcoG)" stroke-width=".25" stroke-dasharray="{{ arcDash }}" stroke-linecap="round" ref="{{ arcRef }}" opacity=".9"></circle>
+          <sc-for list="{{ poles }}" as="p" hint-placeholder-count="4">
+            <line ref="{{ p.lineRef }}" x1="50" y1="50" x2="50" y2="50" stroke="{{ p.lineColor }}" stroke-width="{{ p.lineW }}" opacity="{{ p.lineOp }}"></line>
+            <circle ref="{{ p.packetRef }}" cx="50" cy="50" r=".8" fill="#E6DEFF"></circle>
+          </sc-for>
+        </svg>
+        <div style="position:absolute;left:50%;top:50%;width:40%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(139,106,216,.42) 0%,rgba(79,123,224,.12) 40%,rgba(5,5,11,0) 70%);animation:qtPulse 4s ease-in-out infinite"></div>
+        <img src="media/brand/mark.png" alt="Symbole Quantum Tech" style="position:absolute;left:50%;top:50%;width:19%;transform:translate(-50%,-50%) translateZ(40px);filter:drop-shadow(0 0 24px rgba(139,106,216,.6))">
+        <sc-for list="{{ poles }}" as="p" hint-placeholder-count="4">
+          <button ref="{{ p.ref }}" onMouseEnter="{{ p.activate }}" onFocus="{{ p.activate }}" onClick="{{ p.activate }}" aria-pressed="{{ p.on }}" style="position:absolute;left:50%;top:50%;width:156px;padding:14px 16px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:6px;color:#F2F0FA;background:{{ p.bg }};border:1px solid {{ p.border }};border-radius:10px;backdrop-filter:blur(10px);box-shadow:{{ p.glow }};transition:background .4s,border-color .4s,box-shadow .4s">
+            <span style="display:flex;justify-content:space-between;font:500 10px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8D8AA6"><span>{{ p.code }}</span><span style="font-family:'Noto Sans SC'">{{ p.zh }}</span></span>
+            <span style="font:400 15px/1.25 'Sora',sans-serif">{{ p.name }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:32px;min-height:460px">
+      <div style="display:flex;gap:28px">
+        <div data-parallax="0.08" style="writing-mode:vertical-rl;font:300 30px/1 'Noto Sans SC',sans-serif;letter-spacing:.24em;color:#2E2C4A">生态系统</div>
+        <div data-stagger="120" style="display:flex;flex-direction:column;gap:20px">
+          <span data-reveal="fade" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#A98BEF">01 — L'ÉCOSYSTÈME</span>
+          <h2 data-reveal="up" style="margin:0;font:300 clamp(40px,4.6vw,72px)/1.02 'Sora',sans-serif;letter-spacing:-.035em">Quatre pôles.<br><span style="background:linear-gradient(90deg,#7C9BF0,#B58BEA 50%,#E58BC0);-webkit-background-clip:text;background-clip:text;color:transparent">Un seul système.</span></h2>
+          <p data-reveal="up" style="margin:0;max-width:460px;font:300 17px/1.6 'Sora',sans-serif;color:#B4B1CA;text-wrap:pretty">Chaque véhicule, chaque robot et chaque ville équipée partagent la même intelligence et dialoguent entre eux.</p>
+        </div>
+      </div>
+      <div ref="{{ panelRef }}" style="border-top:1px solid #1C1B2E;padding-top:28px">
+        <sc-if value="{{ hasPole }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:start">
+            <span style="font:600 96px/0.85 'Sora',sans-serif;color:transparent;-webkit-text-stroke:1px #8B6AD8;letter-spacing:-.04em">{{ pole.code }}</span>
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <span style="font:400 26px 'Sora',sans-serif;letter-spacing:-.01em">{{ pole.name }}</span>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="font:500 10px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#6F6C88">DIVISIONS</span>
+                <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ pole.divs }}" as="d"><span style="border:1px solid #2A2840;border-radius:999px;padding:7px 12px;font:400 12px 'JetBrains Mono',monospace;color:#DAD7E8">{{ d.num }} {{ d.name }}</span></sc-for></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="font:500 10px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#6F6C88">PRODUITS PHARES</span>
+                <div style="display:flex;flex-direction:column"><sc-for list="{{ pole.items }}" as="pr"><a href="{{ pr.href }}" style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #15142A;font-size:15px;color:#F2F0FA" style-hover="color:#FFFFFF;padding-left:8px">{{ pr.label }}<span style="font:500 11px 'JetBrains Mono',monospace;color:#A98BEF">Découvrir →</span></a></sc-for></div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noPole }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <span style="display:flex;align-items:center;gap:10px;font:400 12px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#8D8AA6"><span style="width:6px;height:6px;border-radius:50%;background:#8B6AD8;animation:qtBlink 1.6s infinite"></span>Survolez un pôle pour afficher ses divisions et ses produits.</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cosmos" ref="{{ cosmosRef }}" data-screen-label="04 COSMOS" style="position:relative;background:#05050B;height:820vh;border-top:1px solid #12111F">
+  <div style="position:sticky;top:0;height:100vh;min-height:620px;overflow:hidden">
+    <div ref="{{ cosmosGlowRef }}" aria-hidden="true" style="position:absolute;left:50%;top:50%;width:min(1100px,120vw);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(139,106,216,.22),rgba(79,123,224,.08) 40%,rgba(5,5,11,0) 66%);pointer-events:none;will-change:transform,opacity"></div>
+    <div ref="{{ sigRef }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:72px clamp(20px,4vw,64px) 24px;will-change:transform,opacity,filter">
+      <qt-cosmos-sig scrub="" byline="" mark="media/brand/cosmos-mark.png" style="display:block;width:100%"></qt-cosmos-sig>
+    </div>
+    <div ref="{{ layersWrapRef }}" style="position:absolute;inset:0;box-sizing:border-box;padding:96px clamp(20px,4vw,64px) 40px;display:flex;align-items:center;opacity:0;pointer-events:none;will-change:transform,opacity">
+      <div style="max-width:1400px;width:100%;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,112px);align-items:center">
+        <div style="position:relative;width:100%;height:min(64vh,560px)">
+          <qt-layers mode="scroll" track="#cosmos" start="0.4" nolabels="" style="position:absolute;inset:0;display:block"></qt-layers>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#A98BEF">COSMOS · CINQ COUCHES</span>
+          <h2 style="margin:0;font:300 clamp(30px,3vw,46px)/1.08 'Sora',sans-serif;letter-spacing:-.03em;max-width:14ch">Une ville, lue couche par couche.</h2>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ layers }}" as="l" hint-placeholder-count="5">
+            <div style="position:relative;border-top:1px solid #1C1B2E;padding:16px 0 16px 22px;transition:opacity .5s;opacity:{{ l.op }}">
+              <span style="position:absolute;left:0;top:-1px;bottom:0;width:2px;background:{{ l.col }};transform:scaleY({{ l.bar }});transform-origin:top;transition:transform .6s cubic-bezier(.16,.84,.24,1);box-shadow:0 0 16px {{ l.col }}"></span>
+              <div style="display:flex;gap:16px;align-items:baseline">
+                <span style="font:500 11px 'JetBrains Mono',monospace;color:{{ l.codeCol }}">{{ l.code }}</span>
+                <span style="font:400 19px 'Sora',sans-serif">{{ l.name }}</span>
+              </div>
+              <sc-if value="{{ l.on }}">
+                <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;padding-top:14px;animation:qtDropIn .6s cubic-bezier(.16,.84,.24,1)">
+                  <p style="margin:0;font:300 15px/1.6 'Sora',sans-serif;color:#B4B1CA;text-wrap:pretty">{{ l.text }}</p>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <span style="font:300 clamp(28px,2.6vw,40px)/1 'Sora',sans-serif;letter-spacing:-.02em;background:linear-gradient(90deg,#7C9BF0,#E58BC0);-webkit-background-clip:text;background-clip:text;color:transparent">{{ l.metric }}</span>
+                    <span style="font:400 11px/1.5 'JetBrains Mono',monospace;color:#8D8AA6">{{ l.metricLabel }}</span>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="06 COSMOS en direct" style="background:#05050B;padding:0 clamp(20px,4vw,64px) clamp(96px,14vh,160px)">
+  <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid #1C1B2E;padding-top:24px">
+      <span style="display:flex;align-items:center;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#C9C6DA"><span style="width:7px;height:7px;border-radius:50%;background:#D46CA8;box-shadow:0 0 12px #D46CA8;animation:qtBlink 1.4s infinite"></span>EN DIRECT · SHANGHAI</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ cities }}" as="c" hint-placeholder-count="6"><span style="border:1px solid {{ c.border }};border-radius:999px;padding:6px 12px;font:400 11px 'JetBrains Mono',monospace;color:{{ c.color }}">{{ c.city }} · {{ c.since }}</span></sc-for>
+      </div>
+    </div>
+    <div data-stagger="100" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:#1C1B2E;border:1px solid #1C1B2E">
+      <sc-for list="{{ live }}" as="v" hint-placeholder-count="4">
+        <div data-reveal="up" style="background:#07070F;padding:28px 24px;display:flex;flex-direction:column;gap:14px">
+          <span style="font:300 clamp(32px,3.2vw,48px)/1 'JetBrains Mono',monospace;letter-spacing:-.03em;color:#F2F0FA"><span data-live="">{{ v.value }}</span><span style="font-size:.5em;color:#8D8AA6">{{ v.unit }}</span></span>
+          <span style="font:400 13px 'Sora',sans-serif;color:#8D8AA6">{{ v.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <a href="COSMOS.dc.html" style="align-self:flex-start;font:500 12px 'JetBrains Mono',monospace;color:#A98BEF;letter-spacing:.04em" style-hover="color:#FFFFFF">Découvrir COSMOS →</a>
+  </div>
+</section>
+
+<section id="intelligence" data-screen-label="07 Intelligence" style="position:relative;background:#08081A;padding:clamp(96px,14vh,160px) clamp(20px,4vw,64px);overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;right:-20%;top:-20%;width:70%;aspect-ratio:1;background:radial-gradient(circle,rgba(212,108,168,.12),rgba(5,5,11,0) 60%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(56px,8vh,96px)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+      <div data-stagger="120" style="display:flex;flex-direction:column;gap:20px">
+        <span data-reveal="fade" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#A98BEF">03 — INTELLIGENCE ARTIFICIELLE</span>
+        <h2 data-reveal="up" style="margin:0;font:300 clamp(40px,5vw,80px)/1.02 'Sora',sans-serif;letter-spacing:-.035em;max-width:14ch">Une seule intelligence, dans chaque machine.</h2>
+      </div>
+      <div data-parallax="0.1" style="writing-mode:vertical-rl;font:300 36px/1 'Noto Sans SC',sans-serif;letter-spacing:.24em;color:#2A2846">智能</div>
+    </div>
+    <div data-stagger="140" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px 32px">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+        <div data-reveal="up" style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:14px"><span style="font:500 11px 'JetBrains Mono',monospace;color:#A98BEF">{{ p.code }}</span><span style="flex:1;height:1px;background:linear-gradient(90deg,#4F7BE0,#D46CA8 60%,rgba(212,108,168,0))"></span></div>
+          <span style="font:400 28px 'Sora',sans-serif;letter-spacing:-.02em">{{ p.title }}</span>
+          <p style="margin:0;font:300 15px/1.6 'Sora',sans-serif;color:#9A97B4;text-wrap:pretty">{{ p.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div data-stagger="160" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px">
+      <sc-for list="{{ embedded }}" as="e" hint-placeholder-count="3">
+        <a href="Intelligence.dc.html#embarquee" data-reveal="up" style="position:relative;display:block;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#0C0C1C;color:#F2F0FA" style-hover="color:#F2F0FA">
+          <img src="{{ e.media.src }}" alt="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.16,.84,.24,1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,11,0) 40%,rgba(5,5,11,.92) 100%)"></div>
+          <div style="position:absolute;left:24px;right:24px;bottom:24px;display:flex;flex-direction:column;gap:10px">
+            <span style="font:500 10px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#C9B6F5">IA EMBARQUÉE</span>
+            <span style="font:400 26px 'Sora',sans-serif;letter-spacing:-.02em">{{ e.name }}</span>
+            <span style="font:300 14px/1.5 'Sora',sans-serif;color:#C9C6DA;text-wrap:pretty">{{ e.line }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="flotte" ref="{{ fleetRef }}" data-screen-label="08 Flotte" style="position:relative;background:#05050B;height:{{ fleetHeight }}">
+  <div style="position:sticky;top:0;height:100vh;overflow:hidden">
+    <div ref="{{ trackRef }}" style="display:flex;height:100%;will-change:transform">
+      <div style="flex:none;width:100vw;height:100%;position:relative;display:flex;align-items:center;padding:0 clamp(20px,6vw,96px);box-sizing:border-box;overflow:hidden">
+        <div aria-hidden="true" style="position:absolute;left:30%;top:50%;width:80vw;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,123,224,.16),rgba(139,106,216,.08) 35%,rgba(5,5,11,0) 62%)"></div>
+        <div style="position:relative;display:flex;flex-direction:column;gap:28px;max-width:900px">
+          <span style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#A98BEF">04 — LA FLOTTE</span>
+          <h2 style="margin:0;font:300 clamp(56px,8vw,140px)/0.95 'Sora',sans-serif;letter-spacing:-.045em">Ce qui roule.<br><span style="background:linear-gradient(90deg,#7C9BF0,#B58BEA 50%,#E58BC0);-webkit-background-clip:text;background-clip:text;color:transparent">Ce qui veille.</span></h2>
+          <p style="margin:0;max-width:480px;font:300 18px/1.6 'Sora',sans-serif;color:#B4B1CA;text-wrap:pretty">Automobiles, transports urbains, robots domestiques et de sécurité : une même intelligence à bord.</p>
+          <span style="display:flex;align-items:center;gap:14px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#8D8AA6">DÉFILEZ<span style="width:60px;height:1px;background:linear-gradient(90deg,#4F7BE0,#D46CA8)"></span>→</span>
+        </div>
+      </div>
+      <sc-for list="{{ fleet }}" as="f" hint-placeholder-count="3">
+        <article style="flex:none;width:100vw;height:100%;position:relative;overflow:hidden;background:#05050B">
+          <div data-slide-img="" style="position:absolute;top:0;bottom:0;left:-8%;right:-8%;will-change:transform">
+            <img src="{{ f.media.src }}" alt="{{ f.name }}" style="width:100%;height:100%;object-fit:cover;object-position:{{ f.pos }};display:block">
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,11,.85) 0%,rgba(5,5,11,.3) 45%,rgba(5,5,11,0) 70%),linear-gradient(180deg,rgba(5,5,11,.5) 0%,rgba(5,5,11,0) 25%,rgba(5,5,11,0) 60%,rgba(5,5,11,.9) 100%)"></div>
+          <div data-slide-name="" aria-hidden="true" style="position:absolute;left:clamp(20px,6vw,96px);top:14vh;font:600 clamp(80px,15vw,260px)/0.85 'Sora',sans-serif;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(242,240,250,.28);white-space:nowrap;will-change:transform">{{ f.upper }}</div>
+          <div style="position:absolute;left:clamp(20px,6vw,96px);right:clamp(20px,6vw,96px);bottom:clamp(72px,12vh,120px);display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:16px;max-width:560px">
+              <span style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#C9B6F5">{{ f.num }} · {{ f.universe }}</span>
+              <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap"><span style="font:300 clamp(44px,5vw,80px)/1 'Sora',sans-serif;letter-spacing:-.035em">{{ f.name }}</span><span style="font:300 clamp(24px,2.4vw,36px) 'Noto Sans SC',sans-serif;color:#C9C6DA">{{ f.zh }}</span></div>
+              <span style="font:300 17px/1.5 'Sora',sans-serif;color:#DAD7E8">{{ f.type }} · <span style="color:#9A97B4">« {{ f.sens }} »</span></span>
+              <span style="font:400 12px 'JetBrains Mono',monospace;color:#9A97B4">{{ f.access }}</span>
+            </div>
+            <a href="{{ f.href }}" style="display:flex;align-items:center;gap:12px;border:1px solid rgba(242,240,250,.4);background:rgba(5,5,11,.35);backdrop-filter:blur(10px);border-radius:999px;padding:14px 22px;font:500 13px 'Sora',sans-serif;color:#F2F0FA;transition:border-color .3s,box-shadow .3s" style-hover="color:#FFFFFF;border-color:#B58BEA;box-shadow:0 0 30px rgba(139,106,216,.45)">{{ f.cta }}<span style="font-family:'JetBrains Mono'">→</span></a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <div style="position:absolute;left:clamp(20px,6vw,96px);right:clamp(20px,6vw,96px);bottom:32px;display:flex;align-items:center;gap:20px;pointer-events:none">
+      <span style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#F2F0FA;min-width:64px">{{ fleetCounter }}</span>
+      <span style="position:relative;flex:1;height:1px;background:rgba(242,240,250,.15)"><span ref="{{ fleetBarRef }}" style="position:absolute;inset:0;background:linear-gradient(90deg,#4F7BE0,#8B6AD8,#D46CA8);transform:scaleX(0);transform-origin:left;box-shadow:0 0 12px rgba(139,106,216,.8)"></span></span>
+      <span style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8D8AA6">{{ fleetName }}</span>
+    </div>
+  </div>
+</section>
+
+<section id="guardians" ref="{{ guardRef }}" data-screen-label="09 Programme d'État" style="position:relative;background:#05050B;min-height:120vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:clamp(96px,14vh,160px) 0;border-top:1px solid #12111F">
+  <qt-field density="0.9" style="position:absolute;inset:0;display:block;opacity:.45;pointer-events:none"></qt-field>
+  <div aria-hidden="true" style="position:absolute;left:50%;top:38%;width:110vw;height:60vh;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(139,106,216,.2),rgba(79,123,224,.06) 45%,rgba(5,5,11,0) 70%);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:1px;background:linear-gradient(180deg,rgba(181,139,234,0),rgba(181,139,234,.6),rgba(181,139,234,0));box-shadow:0 0 24px 4px rgba(139,106,216,.35);animation:qtScan 9s linear infinite;pointer-events:none"></div>
+  <div ref="{{ guardWordRef }}" aria-hidden="true" style="position:relative;padding:0 2vw;will-change:transform">
+    <div style="font:600 clamp(80px,18.5vw,340px)/0.85 'Sora',sans-serif;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px #2A2846;white-space:nowrap">GUARDIANS</div>
+    <div ref="{{ guardFillRef }}" style="position:absolute;top:0;left:2vw;font:600 clamp(80px,18.5vw,340px)/0.85 'Sora',sans-serif;letter-spacing:-.05em;white-space:nowrap;background:linear-gradient(90deg,#4F7BE0,#8B6AD8 45%,#D46CA8);-webkit-background-clip:text;background-clip:text;color:transparent;clip-path:inset(0 100% 0 0);filter:drop-shadow(0 0 30px rgba(139,106,216,.35))">GUARDIANS</div>
+  </div>
+  <div style="position:relative;max-width:1560px;width:100%;margin:clamp(48px,8vh,96px) auto 0;padding:0 clamp(20px,4vw,64px);box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;gap:clamp(32px,5vw,80px);align-items:end">
+    <div data-stagger="120" style="display:flex;flex-direction:column;gap:24px;min-width:min(100%,320px)">
+      <span data-reveal="fade" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#A98BEF">05 — PROGRAMME D'ÉTAT</span>
+      <p data-reveal="up" style="margin:0;font:300 clamp(36px,4.2vw,68px)/1.04 'Sora',sans-serif;letter-spacing:-.035em;max-width:14ch">{{ guardians.line }}</p>
+      <p data-reveal="up" style="margin:0;max-width:480px;font:300 16px/1.6 'Sora',sans-serif;color:#B4B1CA;text-wrap:pretty">{{ guardiansIntro }}</p>
+      <a data-reveal="up" href="Guardians.dc.html" style="align-self:flex-start;display:flex;align-items:center;gap:12px;border:1px solid #2A2840;border-radius:999px;padding:14px 22px;font:500 13px 'Sora',sans-serif;color:#F2F0FA;transition:border-color .3s,box-shadow .3s" style-hover="color:#FFFFFF;border-color:#B58BEA;box-shadow:0 0 30px rgba(139,106,216,.45)">Le programme Guardians<span style="font-family:'JetBrains Mono'">→</span></a>
+    </div>
+    <div data-stagger="160" style="display:flex;flex-direction:column">
+      <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="3">
+        <div data-reveal="left" style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid #1C1B2E">
+          <span style="font:300 28px/1 'Sora',sans-serif;color:transparent;-webkit-text-stroke:1px #8B6AD8">{{ c.code }}</span>
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 17px 'Sora',sans-serif">{{ c.title }}</span><span style="font:300 14px/1.55 'Sora',sans-serif;color:#9A97B4;text-wrap:pretty">{{ c.text }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <div data-parallax="-0.12" style="writing-mode:vertical-rl;font:300 44px/1 'Noto Sans SC',sans-serif;letter-spacing:.28em;color:#4A4766">守护者计划</div>
+  </div>
+</section>
+
+<section id="actualites" data-screen-label="10 Actualités" style="background:#05050B;padding:clamp(96px,14vh,160px) clamp(20px,4vw,64px);border-top:1px solid #12111F">
+  <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div data-stagger="120" style="display:flex;flex-direction:column;gap:20px">
+        <span data-reveal="fade" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#A98BEF">06 — ACTUALITÉS</span>
+        <h2 data-reveal="up" style="margin:0;font:300 clamp(40px,4.6vw,72px)/1.02 'Sora',sans-serif;letter-spacing:-.035em">Dernières nouvelles.</h2>
+      </div>
+      <a href="Actualites.dc.html" style="font:500 12px 'JetBrains Mono',monospace;color:#A98BEF" style-hover="color:#FFFFFF">Toutes les actualités →</a>
+    </div>
+    <div data-stagger="140" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px">
+      <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+        <a href="{{ n.href }}" data-reveal="up" style="display:flex;flex-direction:column;gap:20px;color:#F2F0FA" style-hover="color:#FFFFFF">
+          <div style="aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#0C0C1C"><img src="{{ n.media.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div style="display:flex;gap:12px;align-items:center"><span style="border:1px solid #2A2840;border-radius:999px;padding:5px 10px;font:500 10px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#C9B6F5">{{ n.upper }}</span><span style="font:400 12px 'JetBrains Mono',monospace;color:#8D8AA6">{{ n.date }}</span></div>
+          <span style="font:400 21px/1.4 'Sora',sans-serif;letter-spacing:-.01em;text-wrap:pretty">{{ n.title }}</span>
+          <span style="font:500 12px 'JetBrains Mono',monospace;color:#A98BEF">Lire →</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section ref="{{ closingRef }}" onMouseMove="{{ closingMove }}" data-screen-label="11 Clôture" style="position:relative;background:#05050B;padding:clamp(140px,22vh,240px) clamp(20px,4vw,64px);overflow:hidden;border-top:1px solid #12111F">
+  <div ref="{{ glowRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:radial-gradient(circle,rgba(139,106,216,.28),rgba(79,123,224,.08) 40%,rgba(5,5,11,0) 68%);transform:translate(70vw,40vh);transition:transform 1.2s cubic-bezier(.16,.84,.24,1);pointer-events:none"></div>
+  <div style="position:relative;max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:end">
+    <p data-reveal="up" style="margin:0;font:300 clamp(40px,5.4vw,88px)/1.04 'Sora',sans-serif;letter-spacing:-.04em;text-wrap:balance">{{ closing.line }}</p>
+    <div data-reveal="up" data-delay="200" style="display:flex;flex-direction:column;gap:24px;align-items:flex-start;justify-self:end">
+      <span style="font:400 13px/1.6 'JetBrains Mono',monospace;color:#9A97B4;max-width:320px">{{ closing.sub }}</span>
+      <a href="Carrieres.dc.html" style="display:flex;align-items:center;gap:14px;background:#F2F0FA;color:#05050B;padding:18px 30px;font:500 15px 'Sora',sans-serif;border-radius:999px;transition:box-shadow .5s" style-hover="background:#FFFFFF;color:#05050B;box-shadow:0 0 50px rgba(139,106,216,.6)">{{ closing.cta }}<span style="font-family:'JetBrains Mono'">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<dc-import name="QTFooter" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.palantir.com/assets/xrfr7uokpv1b/HPf7Dn0QDKzqUWZpz4xuF/53916c319d0ca0c66c813989b627fe50/PAL_HERO_REEL_v2.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Vidéo hero&quot;,&quot;label&quot;:&quot;URL de la vidéo hero&quot;},&quot;heroDarken&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.1,&quot;min&quot;:0,&quot;max&quot;:0.9,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Vidéo hero&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Animations&quot;},&quot;orbit&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Animations&quot;},&quot;fleet&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;longwei,jiafeng,vrail,weihe,xiaoban,longyou,dunwei&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Flotte&quot;}}">
+const HERO_URL = "https://www.palantir.com/assets/xrfr7uokpv1b/HPf7Dn0QDKzqUWZpz4xuF/53916c319d0ca0c66c813989b627fe50/PAL_HERO_REEL_v2.mp4";
+class Component extends DCLogic {
+  state = { lang: 'fr', paused: false, pole: null, layer: -1, slide: 0, cookie: false, videoFailed: false, videoOn: false, live: null, ready: !!window.QT_DATA };
+  poleRefs = [0, 1, 2, 3].map(() => React.createRef());
+  lineRefs = [0, 1, 2, 3].map(() => React.createRef());
+  packetRefs = [0, 1, 2, 3].map(() => React.createRef());
+  sceneRef = React.createRef(); tiltRef = React.createRef(); ringRef = React.createRef(); arcRef = React.createRef(); panelRef = React.createRef();
+  heroMediaRef = React.createRef(); heroTextRef = React.createRef(); videoRef = React.createRef();
+  manifestoRef = React.createRef(); fleetRef = React.createRef(); trackRef = React.createRef(); fleetBarRef = React.createRef();
+  guardRef = React.createRef(); guardWordRef = React.createRef(); guardFillRef = React.createRef();
+  closingRef = React.createRef(); glowRef = React.createRef();
+  cosmosRef = React.createRef(); sigRef = React.createRef(); layersWrapRef = React.createRef(); cosmosGlowRef = React.createRef();
+
+  componentDidMount() {
+    const wait = () => { if (window.QT_DATA) { this.setState({ ready: true }); } else this.t = setTimeout(wait, 40); };
+    wait();
+    try { this.setState({ cookie: !localStorage.getItem('qt_cookie_v1') }); const l = localStorage.getItem('qt_lang'); if (l) this.setState({ lang: l }); } catch (e) {}
+    this.onLang = (e) => this.setState({ lang: e.detail });
+    this.onLayer = (e) => { if (e.detail !== this.state.layer) this.setState({ layer: e.detail }); };
+    window.addEventListener('qt-lang', this.onLang);
+    window.addEventListener('qt-layer', this.onLayer);
+    this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onScroll = () => { if (!this.sTick) { this.sTick = true; requestAnimationFrame(() => { this.sTick = false; this.scrollFx(); }); } };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    this.liveTimer = setInterval(() => {
+      const D = window.QT_DATA; if (!D || document.hidden) return;
+      document.querySelectorAll('[data-live]').forEach((el, i) => { const L = D.cosmos.live[i]; if (!L) return; const dec = L.dec || 0, b = L.value, v = b + (Math.random() - .5) * Math.max(2, b * 0.004) * 2; el.textContent = v.toLocaleString('fr-FR', { minimumFractionDigits: dec, maximumFractionDigits: dec }).replace(/\u202f|\u00a0/g, ' '); });
+    }, 1400);
+    this.angle = 20; let last = performance.now();
+    const tick = (t) => {
+      const dt = Math.min(50, t - last); last = t;
+      if (!this.reduce && this.state.pole === null && this.props.orbit !== false) this.angle += dt * 0.004;
+      const s = this.sceneRef.current;
+      if (s) {
+        const R = s.clientWidth * 0.39;
+        this.poleRefs.forEach((ref, i) => {
+          const a = (this.angle + i * 90 - 90) * Math.PI / 180, cx = Math.cos(a), sy = Math.sin(a);
+          if (ref.current) ref.current.style.transform = `translate(calc(-50% + ${(R * cx).toFixed(1)}px), calc(-50% + ${(R * sy).toFixed(1)}px))`;
+          const ln = this.lineRefs[i].current; if (ln) { ln.setAttribute('x2', (50 + 39 * cx).toFixed(2)); ln.setAttribute('y2', (50 + 39 * sy).toFixed(2)); }
+          const pk = this.packetRefs[i].current;
+          if (pk) { const k = this.reduce ? .5 : ((t * 0.00035 + i * 0.25) % 1); pk.setAttribute('cx', (50 + 39 * cx * k).toFixed(2)); pk.setAttribute('cy', (50 + 39 * sy * k).toFixed(2)); pk.setAttribute('opacity', (Math.sin(k * Math.PI)).toFixed(2)); }
+        });
+        if (this.ringRef.current) this.ringRef.current.style.transform = `rotate(${(-this.angle * 0.6).toFixed(2)}deg)`;
+        if (this.arcRef.current) this.arcRef.current.style.transform = `rotate(${(this.angle * 1.4).toFixed(2)}deg)`, this.arcRef.current.style.transformOrigin = '50px 50px';
+      }
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+    setTimeout(this.scrollFx, 100);
+    this.syncVideo();
+  }
+  componentDidUpdate(pp, ps) {
+    if (pp.heroVideo !== this.props.heroVideo) this.setState({ videoFailed: false, videoOn: false });
+    if (ps && ps.pole !== this.state.pole && this.panelRef.current && !this.reduce) this.panelRef.current.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 500, easing: 'cubic-bezier(.16,.84,.24,1)' });
+    if (ps && ps.ready !== this.state.ready) setTimeout(this.scrollFx, 60);
+    this.syncVideo();
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf); clearTimeout(this.t); clearInterval(this.liveTimer);
+    window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll);
+    window.removeEventListener('qt-lang', this.onLang); window.removeEventListener('qt-layer', this.onLayer);
+  }
+  syncVideo() {
+    const v = this.videoRef.current; if (!v) return;
+    if (this._vEl !== v) {
+      this._vEl = v;
+      v.addEventListener('error', () => this.setState({ videoFailed: true }));
+      v.addEventListener('playing', () => { if (!this.state.videoOn) this.setState({ videoOn: true }); });
+    }
+    v.muted = true;
+    if (!this.state.paused && v.paused) v.play().catch(() => {});
+  }
+  scrollFx = () => {
+    const vh = window.innerHeight, vw = window.innerWidth, clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+    const hp = clamp(window.scrollY / vh, 0, 1);
+    if (!this.reduce) {
+      if (this.heroMediaRef.current) this.heroMediaRef.current.style.transform = `translate3d(0,${(hp * 18).toFixed(2)}vh,0) scale(${(1 + hp * 0.12).toFixed(3)})`;
+      if (this.heroTextRef.current) { this.heroTextRef.current.style.transform = `translate3d(0,${(-hp * 90).toFixed(1)}px,0)`; this.heroTextRef.current.style.opacity = String(clamp(1 - hp * 1.5, 0, 1)); }
+    }
+    const m = this.manifestoRef.current;
+    if (m) {
+      const r = m.getBoundingClientRect(), p = clamp((vh * 0.8 - r.top) / (r.height * 0.8), 0, 1);
+      if (!this._ws || !this._ws.length || !this._ws[0].isConnected) this._ws = Array.from(m.querySelectorAll('[data-w]'));
+      const ws = this._ws, lit = p * ws.length * 1.1;
+      if (r.bottom > 0 && r.top < vh) ws.forEach((w, i) => { const o = this.reduce ? '1' : String(+(0.14 + 0.86 * clamp(lit - i, 0, 1)).toFixed(2)); if (w.style.opacity !== o) w.style.opacity = o; });
+    }
+    const f = this.fleetRef.current, tr = this.trackRef.current;
+    if (f && tr) {
+      const r = f.getBoundingClientRect(), p = clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
+      if (!this._arts || !this._arts.length || !this._arts[0].isConnected) this._arts = Array.from(tr.querySelectorAll('article')).map(a => ({ img: a.querySelector('[data-slide-img]'), nm: a.querySelector('[data-slide-name]') }));
+      const max = (this._arts.length + 1) * vw - vw, x = p * max;
+      const inView = r.bottom > 0 && r.top < vh;
+      tr.style.transform = `translate3d(${(-x).toFixed(1)}px,0,0)`;
+      if (this.fleetBarRef.current) this.fleetBarRef.current.style.transform = `scaleX(${p.toFixed(4)})`;
+      if (!this.reduce && inView) {
+        this._arts.forEach(({ img, nm }, i) => {
+          const off = ((i + 1) * vw - x) / vw;
+          if (Math.abs(off) > 1.5) return;
+          if (img) img.style.transform = `translate3d(${(-off * 7).toFixed(2)}%,0,0) scale(${(1 + Math.min(1, Math.abs(off)) * 0.08).toFixed(3)})`;
+          if (nm) nm.style.transform = `translate3d(${(off * 30).toFixed(2)}vw,0,0)`;
+        });
+      }
+      const n = this._arts.length, idx = Math.round(p * n);
+      if (idx !== this.state.slide) this.setState({ slide: idx });
+    }
+    const cs = this.cosmosRef.current, sg = this.sigRef.current, lw = this.layersWrapRef.current;
+    if (cs && sg && lw) {
+      const r = cs.getBoundingClientRect(), span = Math.max(1, r.height - vh), p = clamp(-r.top / span, 0, 1);
+      const sigEl = sg.querySelector('qt-cosmos-sig');
+      if (sigEl && sigEl.setProgress) sigEl.setProgress(clamp((vh * 0.35 - r.top) / (vh * 0.35 + span * 0.2), 0, 1));
+      const k = clamp((p - 0.24) / 0.15, 0, 1), e = k * k * (3 - 2 * k);
+      const a = clamp(e * 1.6, 0, 1), b = clamp((e - 0.35) / 0.65, 0, 1);
+      sg.style.opacity = String(1 - a);
+      sg.style.transform = this.reduce ? '' : `scale(${(1 + a * 0.5).toFixed(3)})`;
+      sg.style.filter = this.reduce || a === 0 ? '' : `blur(${(a * 10).toFixed(1)}px)`;
+      sg.style.visibility = a >= 1 ? 'hidden' : 'visible';
+      lw.style.opacity = String(b);
+      lw.style.transform = this.reduce ? '' : `scale(${(0.9 + b * 0.1).toFixed(3)}) translateY(${((1 - b) * 30).toFixed(1)}px)`;
+      lw.style.pointerEvents = b > 0.5 ? 'auto' : 'none';
+      if (this.cosmosGlowRef.current) this.cosmosGlowRef.current.style.transform = `translate(-50%,-50%) scale(${(1 - e * 0.35).toFixed(3)})`;
+    }
+    const g = this.guardRef.current;
+    if (g) {
+      const r = g.getBoundingClientRect(), p = clamp((vh - r.top) / (r.height + vh * 0.2), 0, 1);
+      if (this.guardFillRef.current) this.guardFillRef.current.style.clipPath = `inset(0 ${(100 - clamp((p - 0.15) / 0.5, 0, 1) * 100).toFixed(1)}% 0 0)`;
+      if (this.guardWordRef.current && !this.reduce) this.guardWordRef.current.style.transform = `translate3d(${((0.5 - p) * 14).toFixed(2)}vw,0,0)`;
+    }
+  };
+  togglePause = () => {
+    const v = this.videoRef.current;
+    if (v) { if (this.state.paused) v.play().catch(() => {}); else v.pause(); }
+    this.setState(s => ({ paused: !s.paused }));
+  };
+  setCookie(v) { try { localStorage.setItem('qt_cookie_v1', v); } catch (e) {} this.setState({ cookie: false }); }
+
+  renderVals() {
+    const D = window.QT_DATA;
+    if (!D) return {};
+    const st = this.state, L = st.lang, U = window.QT_UTIL;
+    const byId = Object.fromEntries(D.products.map(p => [p.id, p]));
+    const hero = D.home.hero;
+    const raw = ((this.props.heroVideo || '').trim() || HERO_URL).trim();
+    const yt = raw.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+    const vm = raw.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    const embedSrc = yt ? `https://www.youtube.com/embed/${yt[1]}?autoplay=1&mute=1&loop=1&playlist=${yt[1]}&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0`
+      : vm ? `https://player.vimeo.com/video/${vm[1]}?background=1&autoplay=1&loop=1&muted=1` : '';
+    const isEmbed = !!embedSrc, isFile = !!raw && !isEmbed && !st.videoFailed;
+    const darken = this.props.heroDarken ?? 0.1;
+
+    let n = 0;
+    const polesData = D.nav.poles.map(p => ({ ...p, divs: p.divisions.map(d => ({ name: d, num: String(++n).padStart(2, '0') })) }));
+    const byName = Object.fromEntries(D.products.map(p => [p.name, p.id]));
+    const prodHref = name => name === 'COSMOS' ? 'COSMOS.dc.html' : name === 'Programme Guardians' ? 'Guardians.dc.html' : byName[name] ? U.productHref(byName[name]) : /IA|Hologramme/.test(name) ? 'Intelligence.dc.html#embarquee' : 'Divisions.dc.html';
+    const lay = D.cosmos.layers, COL = ['#4F7BE0', '#6C74DA', '#8B6AD8', '#AE6AC4', '#D46CA8'];
+    const uniName = Object.fromEntries(D.universes.map(u => [u.id, u.name]));
+    const fleetIds = (this.props.fleet || 'longwei,jiafeng,vrail,weihe,xiaoban,longyou,dunwei').split(',').map(s => s.trim()).filter(id => byId[id] && byId[id].published && byId[id].media.src);
+    const fleet = fleetIds.map((id, i) => { const p = byId[id]; return { ...p, upper: p.name.toUpperCase(), num: String(i + 1).padStart(2, '0'), universe: (uniName[p.universe] || '').toUpperCase(), access: U.access(p), cta: U.cta(p), pos: 'center', href: U.productHref(p.id) }; });
+    const sIdx = Math.max(0, Math.min(fleet.length, st.slide));
+    const fmtLive = (v, i) => { const d = D.cosmos.live[i].dec || 0; return v.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace(/\u202f|\u00a0/g, ' '); };
+    const words = s => s.split(/\s+/).filter(Boolean).map(t => ({ t }));
+
+    return {
+      showIntro: this.props.intro !== false,
+      lang: L,
+      hero: { subtitle: hero.subtitle[L] || hero.subtitle.fr, cta: hero.cta[L] || hero.cta.fr },
+      heroWords: L === 'zh' ? [{ t: hero.title.zh }] : words(hero.title[L] || hero.title.fr),
+      heroMediaRef: this.heroMediaRef, heroTextRef: this.heroTextRef, videoRef: this.videoRef,
+      heroSrc: raw, isFile, isEmbed, embedSrc, darken,
+      videoOpacity: st.videoOn ? 1 : 0,
+      videoMissing: !raw || st.videoFailed,
+      paused: st.paused, playing: !st.paused,
+      pauseAria: st.paused ? 'Reprendre la vidéo' : 'Mettre la vidéo en pause',
+      togglePause: this.togglePause,
+
+      manifestoRef: this.manifestoRef,
+      manifestoWords: words(D.home.manifesto),
+
+      sceneRef: this.sceneRef, tiltRef: this.tiltRef, ringRef: this.ringRef, arcRef: this.arcRef, panelRef: this.panelRef,
+      arcDash: '18 227',
+      sceneMove: (e) => { if (this.reduce) return; const el = this.tiltRef.current, sc = this.sceneRef.current; if (!el || !sc) return; const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; sc.style.transform = `rotateX(${(-y * 10).toFixed(2)}deg) rotateY(${(x * 12).toFixed(2)}deg)`; },
+      sceneLeave: () => { if (this.sceneRef.current) this.sceneRef.current.style.transform = ''; },
+      clearPole: () => this.setState({ pole: null }),
+      poles: polesData.map((p, i) => {
+        const on = st.pole === i;
+        return { ...p, ref: this.poleRefs[i], lineRef: this.lineRefs[i], packetRef: this.packetRefs[i], on,
+          bg: on ? 'rgba(40,32,80,.75)' : 'rgba(12,12,26,.7)', border: on ? '#8B6AD8' : '#24223A', glow: on ? '0 0 32px rgba(139,106,216,.45)' : 'none',
+          lineColor: on ? '#B58BEA' : '#2A2846', lineW: on ? '.45' : '.2', lineOp: on ? '1' : '.8',
+          activate: () => this.setState({ pole: i }) };
+      }),
+      hasPole: st.pole !== null, noPole: st.pole === null,
+      pole: (() => { const p = polesData[st.pole ?? 0]; return { ...p, items: p.products.map(x => ({ label: x, href: prodHref(x) })) }; })(),
+
+      cosmos: D.cosmos, cosmosRef: this.cosmosRef, sigRef: this.sigRef, layersWrapRef: this.layersWrapRef, cosmosGlowRef: this.cosmosGlowRef,
+      layers: lay.map((l, i) => { const on = st.layer === i; return { ...l, on, col: COL[i], bar: on ? 1 : 0, op: st.layer < 0 || on ? 1 : 0.42, codeCol: on ? COL[i] : '#6F6C88' }; }),
+      cities: D.cosmos.cities.map(c => { const on = c.status === 'En service'; return { ...c, border: on ? '#3A3460' : '#1C1B2E', color: on ? '#DAD7E8' : '#6F6C88' }; }),
+      live: D.cosmos.live.map((v, i) => ({ label: v.label, unit: v.unit ? ' ' + v.unit : '', value: fmtLive(v.value, i) })),
+
+      pillars: D.intelligence.pillars,
+      embedded: D.intelligence.embedded,
+
+      fleetRef: this.fleetRef, trackRef: this.trackRef, fleetBarRef: this.fleetBarRef,
+      fleet, fleetHeight: `${(fleet.length + 1) * 100}vh`,
+      fleetCounter: sIdx === 0 ? `00 / ${String(fleet.length).padStart(2, '0')}` : `${String(sIdx).padStart(2, '0')} / ${String(fleet.length).padStart(2, '0')}`,
+      fleetName: sIdx === 0 ? 'LA FLOTTE' : (fleet[sIdx - 1] ? fleet[sIdx - 1].type.toUpperCase() : ''),
+
+      guardRef: this.guardRef, guardWordRef: this.guardWordRef, guardFillRef: this.guardFillRef,
+      guardians: D.home.guardians,
+      guardiansIntro: D.guardiansPage.intro,
+      chapters: D.guardiansPage.chapters,
+
+      news: D.news.map((x, i) => ({ ...x, i })).filter(x => x.media.src).slice(0, 3).map(x => ({ ...x, upper: x.type.toUpperCase(), href: U.articleHref(x.i) })),
+      closingRef: this.closingRef, glowRef: this.glowRef,
+      closingMove: (e) => { const s = this.closingRef.current, g = this.glowRef.current; if (!s || !g || this.reduce) return; const r = s.getBoundingClientRect(); g.style.transform = `translate(${e.clientX - r.left}px,${e.clientY - r.top}px)`; },
+      closing: D.home.closing
+    };
+  }
+}
+</script>
+</body>
+</html>
